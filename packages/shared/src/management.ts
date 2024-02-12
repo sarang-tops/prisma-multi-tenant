@@ -53,7 +53,7 @@ export default class Management {
       return await client.tenant.create({
         data: tenant,
       })
-    } catch (err) {
+    } catch (err: any) {
       if (err.code == 'P2002') throw new PmtError('tenant-already-exists', tenant.name)
       throw err
     }
@@ -95,7 +95,7 @@ export default class Management {
         where: { name },
         data: update,
       })
-    } catch (err) {
+    } catch (err: any) {
       if (err.message.includes('RecordNotFound')) throw new PmtError('tenant-does-not-exist', name)
       throw err
     }
@@ -106,7 +106,7 @@ export default class Management {
 
     try {
       return await client.tenant.delete({ where: { name } })
-    } catch (err) {
+    } catch (err: any) {
       if (err.message.includes('RecordNotFound')) throw new PmtError('tenant-does-not-exist', name)
       throw err
     }

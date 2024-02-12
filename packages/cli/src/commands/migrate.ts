@@ -187,7 +187,7 @@ class Migrate implements Command {
     schemaPath = schemaPath || (await getSchemaPath())
 
     const retCode = await spawnShell(
-      `npx @prisma/cli migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`
+      `npx prisma migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`
     )
 
     if (retCode === 1) {

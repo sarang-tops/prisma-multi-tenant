@@ -9,5 +9,5 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "exclude": ["src/**/*.spec.*"]
+  "exclude": ["src/**/*.spec.*", "../../node_modules/*"]
 }

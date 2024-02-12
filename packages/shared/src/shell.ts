@@ -97,10 +97,10 @@ export const runDistant = (cmd: string, tenant?: Datasource): Promise<string | B
 
 export const getPrismaCliPath = async (): Promise<string> => {
   //const nodeModules = await getNodeModules()
-  //return path.join(nodeModules, '@prisma/cli/build/index.js')
-  const path = await findUp('node_modules/@prisma/cli/build/index.js')
+  //return path.join(nodeModules, 'prisma/build/index.js')
+  const path = await findUp('node_modules/prisma/build/index.js')
   if (!path) {
-    throw new Error('Cannot find @prisma/cli')
+    throw new Error('Cannot find prisma')
   }
   return path
 }
@@ -141,9 +141,7 @@ export const runDistantPrisma = async (
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       const altCmd =
-        (tenant?.name ? `prisma-multi-tenant env ${tenant.name} -- ` : '') +
-        'npx @prisma/cli ' +
-        cmd
+        (tenant?.name ? `prisma-multi-tenant env ${tenant.name} -- ` : '') + 'npx prisma ' + cmd
       let chalk
       try {
         chalk = require('chalk')
@@ -160,7 +158,7 @@ export const runDistantPrisma = async (
     promise
       .then(() => {
         clearTimeout(timeout)
-        resolve()
+        resolve('true')
       })
       .catch((err) => {
         clearTimeout(timeout)

@@ -41,7 +41,7 @@ class Studio implements Command {
         false
       )
     } catch (err) {
-      // There is currently a bug with @prisma/cli where the studio error is malformed.
+      // There is currently a bug with prisma where the studio error is malformed.
       // We will assume that if it throws with a code 7, it's an issue with the port.
       // See: https://github.com/prisma/prisma/issues/3309
       if (err.message.includes('EADDRINUSE') || err.code === 7) {
