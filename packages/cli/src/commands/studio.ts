@@ -40,7 +40,7 @@ class Studio implements Command {
         tenant,
         false
       )
-    } catch (err) {
+    } catch (err: any) {
       // There is currently a bug with prisma where the studio error is malformed.
       // We will assume that if it throws with a code 7, it's an issue with the port.
       // See: https://github.com/prisma/prisma/issues/3309
