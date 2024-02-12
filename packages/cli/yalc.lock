@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "packages": {
+    "@prisma-multi-tenant-v2/shared": {
+      "version": "2.4.2",
+      "signature": "bc5d1268fd04c41fc55a2723ccd401fe",
+      "file": true,
+      "replaced": "^2.4.2"
+    }
+  }
+}

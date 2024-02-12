@@ -1,7 +1,7 @@
 <h1 align="center">Blitz plugin for Prisma-multi-tenant 🧭</h1>
 <p align="center">
-  <a href="https://www.npmjs.com/package/@prisma-multi-tenant/blitz">
-    <img alt="Version" src="https://img.shields.io/npm/v/@prisma-multi-tenant/blitz.svg">
+  <a href="https://www.npmjs.com/package/@prisma-multi-tenant-v2/blitz">
+    <img alt="Version" src="https://img.shields.io/npm/v/@prisma-multi-tenant-v2/blitz.svg">
   </a>
   <a href="https://github.com/Errorname/prisma-multi-tenant#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
@@ -23,7 +23,7 @@
 
 ```sh
 npm i -g prisma-multi-tenant # CLI for tenant management
-npm i @prisma-multi-tenant/blitz # Blitz plugin
+npm i @prisma-multi-tenant-v2/blitz # Blitz plugin
 
 prisma-multi-tenant init # Init multi-tenancy in your Blitz project
 ```
@@ -35,7 +35,7 @@ prisma-multi-tenant init # Init multi-tenancy in your Blitz project
 First, add the `multiTenantMiddleware` to your `blitz.config.js` file:
 
 ```js
-const { multiTenantMiddleware } = require('@prisma-multi-tenant/blitz')
+const { multiTenantMiddleware } = require('@prisma-multi-tenant-v2/blitz')
 
 module.exports = {
   // ...

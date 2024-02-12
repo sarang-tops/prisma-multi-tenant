@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { MultiTenant } from '@prisma-multi-tenant/client'
+import { MultiTenant } from '@prisma-multi-tenant-v2/client'
 
 let multiTenant: MultiTenant<PrismaClient>
 

@@ -8,7 +8,7 @@ import {
   runLocalPrisma,
   spawnShell,
   getSchemaPath,
-} from '@prisma-multi-tenant/shared'
+} from '@prisma-multi-tenant-v2/shared'
 
 import { Command, CommandArguments } from '../types'
 
@@ -163,13 +163,13 @@ class Migrate implements Command {
   ) {
     schemaPath = schemaPath || (await getSchemaPath())
     return runDistantPrisma(
-      `migrate ${action} ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`,
+      `migrate ${action} ${migrateArgs} --schema ${schemaPath} ${prismaArgs}`,
       tenant
     )
   }
 
   migrateManagement(action: string, migrateArgs = '', prismaArgs = '') {
-    return runLocalPrisma(`migrate ${action} ${migrateArgs} ${prismaArgs} --experimental`)
+    return runLocalPrisma(`migrate ${action} ${migrateArgs} ${prismaArgs}`)
   }
 
   async migrateSave(
@@ -187,7 +187,7 @@ class Migrate implements Command {
     schemaPath = schemaPath || (await getSchemaPath())
 
     const retCode = await spawnShell(
-      `npx prisma migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`
+      `npx prisma migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs}`
     )
 
     if (retCode === 1) {
@@ -195,9 +195,7 @@ class Migrate implements Command {
         // Bug with npm@7 and npx
         console.log('This is probably a bug with npm. Retrying...')
       }
-      return spawnShell(
-        `prisma migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs} --experimental`
-      )
+      return spawnShell(`prisma migrate save ${migrateArgs} --schema ${schemaPath} ${prismaArgs}`)
     }
 
     return retCode

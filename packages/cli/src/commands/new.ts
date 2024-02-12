@@ -6,7 +6,7 @@ import {
   PmtError,
   getSchemaPath,
   translateDatasourceUrl,
-} from '@prisma-multi-tenant/shared'
+} from '@prisma-multi-tenant-v2/shared'
 
 import { Command, CommandArguments } from '../types'
 import prompt from '../helpers/prompt'
@@ -60,7 +60,7 @@ class New implements Command {
 
     process.env.MANAGEMENT_URL = translateDatasourceUrl(databaseUrl, path.dirname(schemaPath))
 
-    await migrate.migrateManagement('up', '--create-db')
+    await migrate.migrateManagement('dev', '--name init')
 
     console.log(chalk`\n✅  {green Successfuly created a new management database!}\n`)
   }
@@ -73,7 +73,7 @@ class New implements Command {
       throw new PmtError('reserved-tenant-name', 'management')
     }
 
-    await migrate.migrateTenant('up', tenant, args.options.schema, '--create-db')
+    await migrate.migrateTenant('dev', tenant, args.options.schema, '--name init')
 
     if (args.options['no-management']) {
       console.log(

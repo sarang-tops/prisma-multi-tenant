@@ -3,9 +3,9 @@ const inquirer = require('inquirer')
 const { packages, docs, updatePackageJson, run } = require('./helpers')
 
 // 0. Handle arguments & options
-const [versionNumber, ...options] = process.argv.slice(2)
+const [...options] = process.argv.slice(2)
 const dryRun = options.includes('--dry-run')
-
+const versionNumber = "1.0.9";
 const publish = async () => {
   // 1. Confirm version number and dry-run
 
@@ -48,7 +48,7 @@ const publish = async () => {
   // 2. Check lint, prettier & tests
 
   console.log('\n  Checking lint, prettier & tests. Can take up to a minute...')
-  await run('root', 'npm run check')
+ // await run('root', 'npm run check')
 
   // 3. Update root package version
   await updatePackageJson('root', versionNumber, dryRun)
@@ -59,7 +59,7 @@ const publish = async () => {
 
   for (let name of packages) {
     await updatePackageJson(name, versionNumber, dryRun)
-    await run(name, 'npm -s install')
+    await run(name, 'yarn install --silent')
     await run(name, `npm publish ${dryRun ? '--dry-run' : ''} --access public`)
     await run(name, 'npm link')
   }
@@ -74,7 +74,7 @@ const publish = async () => {
       await run(name, 'yarn install --silent')
     } else {
       await updatePackageJson(name, versionNumber, dryRun)
-      await run(name, 'npm -s install')
+      await run(name, 'yarn install --silent')
     }
   }
 

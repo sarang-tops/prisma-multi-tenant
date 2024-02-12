@@ -73,7 +73,7 @@ export const runLocal = async (
   cmd: string,
   env?: { [name: string]: string }
 ): Promise<string | Buffer> => {
-  const sharedPath = await findUp('node_modules/@prisma-multi-tenant/shared/build')
+  const sharedPath = await findUp('node_modules/@prisma-multi-tenant-v2/shared/build')
 
   return runShell(cmd, {
     cwd: sharedPath || '',

@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-export { MultiTenant } from '@prisma-multi-tenant/client'
+export { MultiTenant } from '@prisma-multi-tenant-v2/client'
 
 export const fromContext = (): PrismaClient =>
   new Proxy(new PrismaClient(), {

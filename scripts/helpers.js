@@ -19,11 +19,11 @@ const cwd = {
   cli: path.join(__dirname, '../packages/cli'),
   blitz: path.join(__dirname, '../packages/blitz'),
   redwood: path.join(__dirname, '../packages/redwood'),
-  'doc-basic-js': path.join(__dirname, '../docs/examples/basic-js'),
-  'doc-basic-ts': path.join(__dirname, '../docs/examples/basic-ts'),
-  'doc-express': path.join(__dirname, '../docs/examples/express'),
-  'doc-apollo': path.join(__dirname, '../docs/examples/apollo'),
-  'doc-redwood': path.join(__dirname, '../docs/examples/redwood'),
+  // 'doc-basic-js': path.join(__dirname, '../docs/examples/basic-js'),
+  // 'doc-basic-ts': path.join(__dirname, '../docs/examples/basic-ts'),
+  // 'doc-express': path.join(__dirname, '../docs/examples/express'),
+  // 'doc-apollo': path.join(__dirname, '../docs/examples/apollo'),
+  // 'doc-redwood': path.join(__dirname, '../docs/examples/redwood'),
 }
 
 const updatePackageJson = async (
@@ -44,10 +44,10 @@ const updatePackageJson = async (
     for (let packName of packages) {
       if (
         packageJson.dependencies &&
-        packageJson.dependencies[`@prisma-multi-tenant/${packName}`]
+        packageJson.dependencies[`@prisma-multi-tenant-v2/${packName}`]
       ) {
         packageJson.dependencies[
-          `@prisma-multi-tenant/${packName}`
+          `@prisma-multi-tenant-v2/${packName}`
         ] = `^${versionNumber}`
       }
     }

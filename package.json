@@ -1,6 +1,6 @@
 {
-  "version": "2.4.2",
-  "private": "true",
+  "version": "1.0.9",
+  "private": true,
   "scripts": {
     "bootstrap": "npm run _tmp_preinstall && npm i; npm i && npm run link:cli",
     "link:cli": "cd packages/cli && npm uninstall -g prisma-multi-tenant && npm link",

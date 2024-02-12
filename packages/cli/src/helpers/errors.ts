@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 
 import { CliArguments, Command } from '../types'
-import { clientManagementPath, PmtError } from '@prisma-multi-tenant/shared'
+import { clientManagementPath, PmtError } from '@prisma-multi-tenant-v2/shared'
 
 export const printError = (error: PmtError, args: CliArguments): void => {
   if (error.message.match(`Cannot find module '${clientManagementPath}'`)) {

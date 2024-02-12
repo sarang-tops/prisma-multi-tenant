@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 
-import { Management, runDistantPrisma, requireDistant } from '@prisma-multi-tenant/shared'
+import { Management, runDistantPrisma, requireDistant } from '@prisma-multi-tenant-v2/shared'
 
 interface MultiTenantOptions {
   useManagement?: boolean
@@ -136,7 +136,7 @@ class MultiTenant<PrismaClient extends { $disconnect: () => Promise<void> }> {
 
     await this.management.create(tenant)
 
-    await runDistantPrisma('migrate up --create-db --experimental', tenant, false)
+    await runDistantPrisma('migrate dev --name init', tenant, false)
 
     return this.directGet(tenant, options)
   }
@@ -154,7 +154,7 @@ class MultiTenant<PrismaClient extends { $disconnect: () => Promise<void> }> {
 
     const tenant = await this.management.delete(name)
 
-    await runDistantPrisma('migrate down --experimental', tenant, false)
+    await runDistantPrisma('migrate down', tenant, false)
 
     return tenant
   }

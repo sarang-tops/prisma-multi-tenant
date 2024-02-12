@@ -1,5 +1,5 @@
 {
-  "name": "@prisma-multi-tenant/redwood",
+  "name": "@prisma-multi-tenant-v2/redwood",
   "version": "2.4.2",
   "description": "Redwood plugin for prisma-multi-tenant",
   "author": {
@@ -20,7 +20,7 @@
     "prettier": "prettier \"src/**/*.ts\" --check"
   },
   "dependencies": {
-    "@prisma-multi-tenant/client": "^2.4.2"
+    "@prisma-multi-tenant-v2/client": "^1.0.0"
   },
   "peerDependencies": {
     "@redwoodjs/api": "^0.15.3"
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Errorname/prisma-multi-tenant.git"
+    "url": "https://github.com/sarang-tops/prisma-multi-tenant"
   },
   "keywords": [
     "prisma",

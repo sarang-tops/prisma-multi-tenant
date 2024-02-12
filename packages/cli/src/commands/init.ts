@@ -14,7 +14,7 @@ import {
   isPrismaCliLocallyInstalled,
   translateDatasourceUrl,
   getSchemaPath,
-} from '@prisma-multi-tenant/shared'
+} from '@prisma-multi-tenant-v2/shared'
 
 import { Command, CommandArguments } from '../types'
 import { useYarn } from '../helpers/misc'
@@ -76,13 +76,13 @@ class Init implements Command {
   }
 
   async installPMT() {
-    console.log('\n  Installing `@prisma-multi-tenant/client` as a dependency in your app...')
+    console.log('\n  Installing `@prisma-multi-tenant-v2/client` as a dependency in your app...')
 
     const isUsingYarn = await useYarn()
     const command = isUsingYarn ? 'yarn add --ignore-workspace-root-check' : 'npm install'
     const devOption = isUsingYarn ? '--dev' : '-D'
 
-    await runShell(`${command} @prisma-multi-tenant/client@${packageJson.version}`)
+    await runShell(`${command} @prisma-multi-tenant-v2/client@${packageJson.version}`)
 
     if (!(await isPrismaCliLocallyInstalled())) {
       console.log('\n  Also installing `prisma` as a dev dependency in your app...')
@@ -203,7 +203,7 @@ class Init implements Command {
   setUpManagement() {
     console.log('\n  Setting up management database...')
 
-    return migrate.migrateManagement('up', '--create-db')
+    return migrate.migrateManagement('dev', '--name init')
   }
 
   async createFirstTenant(firstTenant: Datasource, management: Management) {
@@ -224,7 +224,7 @@ class Init implements Command {
 
     const script = `
       // const { PrismaClient } = require('@prisma/client') // Uncomment for TypeScript support
-      const { MultiTenant } = require('@prisma-multi-tenant/client')
+      const { MultiTenant } = require('@prisma-multi-tenant-v2/client')
 
       // This is the name of your first tenant, try with another one
       const name = "${firstTenant?.name || 'dev'}"

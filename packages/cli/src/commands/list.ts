@@ -1,7 +1,7 @@
 import Table from 'cli-table3'
 import chalk from 'chalk'
 
-import { Management } from '@prisma-multi-tenant/shared'
+import { Management } from '@prisma-multi-tenant-v2/shared'
 
 import { Command, CommandArguments } from '../types'
 

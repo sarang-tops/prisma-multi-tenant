@@ -1,4 +1,4 @@
-import { Management, runDistantPrisma, getSchemaPath } from '@prisma-multi-tenant/shared'
+import { Management, runDistantPrisma, getSchemaPath } from '@prisma-multi-tenant-v2/shared'
 
 import { Command, CommandArguments } from '../types'
 import chalk from 'chalk'
@@ -36,7 +36,7 @@ class Studio implements Command {
     try {
       const schemaPath = args.options.schema || (await getSchemaPath())
       await runDistantPrisma(
-        `studio --port ${port} --schema ${schemaPath} ${args.secondary} --experimental`,
+        `studio --port ${port} --schema ${schemaPath} ${args.secondary}`,
         tenant,
         false
       )
