@@ -172,6 +172,10 @@ class Migrate implements Command {
     return runLocalPrisma(`migrate ${action} ${migrateArgs} ${prismaArgs}`)
   }
 
+  setMigrateManagement(action: string, migrateArgs = '', prismaArgs = '') {
+    return runLocalPrisma(`db push`)
+  }
+
   async migrateSave(
     management: Management,
     name?: string,
