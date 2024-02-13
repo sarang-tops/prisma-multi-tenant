@@ -136,7 +136,7 @@ class MultiTenant<PrismaClient extends { $disconnect: () => Promise<void> }> {
 
     await this.management.create(tenant)
 
-    await runDistantPrisma('migrate dev --name init', tenant, false)
+    await runDistantPrisma('db push', tenant, false)
 
     return this.directGet(tenant, options)
   }

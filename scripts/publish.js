@@ -5,7 +5,7 @@ const { packages, docs, updatePackageJson, run } = require('./helpers')
 // 0. Handle arguments & options
 const [...options] = process.argv.slice(2)
 const dryRun = options.includes('--dry-run')
-const versionNumber = "1.0.10";
+const versionNumber = "1.0.13";
 const publish = async () => {
   // 1. Confirm version number and dry-run
 
